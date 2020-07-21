@@ -6,15 +6,13 @@ inhibit_all_warnings!
 target 'PhotosMigrator' do
     inherit! :search_paths
 
-    pod 'SDWebImage', '~> 5.0'
-    pod 'SDWebImagePhotosPlugin'
-
-    pod 'Haptica'
+    pod 'AcknowList'
 
     pod 'MBProgressHUD', '~> 1.2.0'
 
     pod 'SPAlert'
-    pod 'SPPermissions/Camera'
     pod 'SPPermissions/PhotoLibrary'
+
+    pod 'WhatsNewKit'
   
 end

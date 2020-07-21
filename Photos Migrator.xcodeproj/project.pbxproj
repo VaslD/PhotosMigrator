@@ -14,6 +14,7 @@
 		E823F28D24C571E4009FF0AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E823F28B24C571E4009FF0AF /* LaunchScreen.storyboard */; };
 		E823F29524C57E3A009FF0AF /* UIViewController+UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823F29424C57E3A009FF0AF /* UIViewController+UIAlertController.swift */; };
 		E823F29724C58F89009FF0AF /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823F29624C58F89009FF0AF /* PhotosViewController.swift */; };
+		E8F96F0024C6F86E00BBB27C /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8F96EFF24C6F86E00BBB27C /* Acknowledgements.plist */; };
 		FD383354AAAFA06359D8128B /* Pods_PhotosMigrator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3092B465C689ED89E6A4C4D5 /* Pods_PhotosMigrator.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		E823F28E24C571E4009FF0AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E823F29424C57E3A009FF0AF /* UIViewController+UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIAlertController.swift"; sourceTree = "<group>"; };
 		E823F29624C58F89009FF0AF /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		E8F96EFF24C6F86E00BBB27C /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		E823F27F24C571E3009FF0AF /* PhotosMigrator */ = {
 			isa = PBXGroup;
 			children = (
+				E8F96EFF24C6F86E00BBB27C /* Acknowledgements.plist */,
 				E823F28024C571E3009FF0AF /* AppDelegate.swift */,
 				E823F28424C571E3009FF0AF /* FoldersViewController.swift */,
 				E823F29624C58F89009FF0AF /* PhotosViewController.swift */,
@@ -155,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E823F28D24C571E4009FF0AF /* LaunchScreen.storyboard in Resources */,
+				E8F96F0024C6F86E00BBB27C /* Acknowledgements.plist in Resources */,
 				E823F28A24C571E4009FF0AF /* Assets.xcassets in Resources */,
 				E823F28824C571E3009FF0AF /* Main.storyboard in Resources */,
 			);

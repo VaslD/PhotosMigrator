@@ -25,16 +25,6 @@ extension UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField(configurationHandler: { field in
             field.placeholder = placeholder
-
-            let delegate = UITextField.GenericUITextFieldDelegate()
-            delegate.didEndEditing = { _, _ in
-                if field.text?.isEmpty != false {
-                    alert.actions.first(where: { alertAction in alertAction.title == doneAction })!.isEnabled = false
-                } else {
-                    alert.actions.first(where: { alertAction in alertAction.title == doneAction })!.isEnabled = true
-                }
-            }
-            field.delegate = delegate
         })
         alert.addAction(UIAlertAction(title: cancelAction, style: .cancel, handler: nil))
         let action = UIAlertAction(title: doneAction, style: .default,
@@ -47,15 +37,5 @@ extension UIViewController {
             alert.preferredAction = action
         }
         self.present(alert, animated: true, completion: completionHandler)
-    }
-}
-
-extension UITextField {
-    class GenericUITextFieldDelegate: NSObject, UITextFieldDelegate {
-        var didEndEditing: ((UITextField, UITextField.DidEndEditingReason) -> Void)?
-
-        func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-            self.didEndEditing?(textField, reason)
-        }
     }
 }

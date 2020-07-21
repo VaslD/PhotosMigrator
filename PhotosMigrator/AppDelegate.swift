@@ -4,13 +4,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
-    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let manager = FileManager.default
-        if let root = try? manager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true) {
-            let readMe = root.appendingPathComponent("ReadMe.md")
-            manager.createFile(atPath: readMe.path, contents: nil, attributes: nil)
-        }
+    var observers: [NSObjectProtocol] = []
 
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return true
+    }
+
+    func applicationWillTerminate(_: UIApplication) {
+        for observer in self.observers {
+            NotificationCenter.default.removeObserver(observer)
+        }
     }
 }
