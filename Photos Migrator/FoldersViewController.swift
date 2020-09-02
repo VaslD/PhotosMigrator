@@ -41,14 +41,22 @@ class FoldersViewController: UITableViewController {
 
     override func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "basic", for: indexPath)
+        cell.textLabel!.textColor = .label
         if isEditing, indexPath.row == self.folders.count {
             cell.textLabel!.text = "Create New Album"
             cell.textLabel!.font = UIFont.preferredFont(forTextStyle: .headline)
             cell.accessoryType = .none
         } else {
-            cell.textLabel!.text = try! self.folders[indexPath.row].resourceValues(forKeys: Set(arrayLiteral: .nameKey)).name!
-            cell.textLabel!.font = UIFont.preferredFont(forTextStyle: .body)
-            cell.accessoryType = .disclosureIndicator
+            do {
+                cell.textLabel!.text = try self.folders[indexPath.row].resourceValues(forKeys: Set(arrayLiteral: .nameKey)).name!
+                cell.textLabel!.font = UIFont.preferredFont(forTextStyle: .body)
+                cell.accessoryType = .disclosureIndicator
+            } catch {
+                cell.textLabel!.text = "[Error] Folder no longer readable."
+                cell.textLabel!.font = UIFont.preferredFont(forTextStyle: .body)
+                cell.textLabel!.textColor = .systemRed
+                cell.accessoryType = .none
+            }
         }
         return cell
     }
@@ -91,14 +99,10 @@ class FoldersViewController: UITableViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
-        if self.folders.isEmpty {
-            SPAlert.present(title: "No Albums Found",
-                            message: "You can create folders and add photos to import in Edit mode or using Files app.",
-                            preset: .question)
-        }
     }
 
-    @IBAction func showAboutPage(_: UIBarButtonItem) {
+    @IBAction
+    func showAboutPage(_: UIBarButtonItem) {
         let about = WhatsNew(title: "Photos Migrator", items: [
             WhatsNew.Item(title: "Create Albums as Folders", subtitle: "Use Edit mode or Files app to create custom-named folders. These will be albums which contains imported photos.", image: UIImage(systemName: "folder.fill.badge.plus")),
             WhatsNew.Item(title: "Add Images", subtitle: "Use Files app, third-party apps, and iTunes to manage images inside albums (folders). Videos are not yet supported.", image: UIImage(systemName: "photo.fill")),
@@ -121,7 +125,8 @@ class FoldersViewController: UITableViewController {
 
     // MARK: I/O
 
-    @IBAction func refresh(_: UIRefreshControl, forEvent _: UIEvent) {
+    @IBAction
+    func refresh(_: UIRefreshControl, forEvent _: UIEvent) {
         self.refresh()
     }
 

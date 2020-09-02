@@ -101,11 +101,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Photos" id="ltn-lc-kPK">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="tray.and.arrow.down.fill" catalog="system" id="IOd-29-7iM">
-                            <connections>
-                                <action selector="importPhotos:" destination="85D-R5-dco" id="czz-gq-8sk"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="archivebox" catalog="system" id="phH-dx-XKq">
+                                <connections>
+                                    <action selector="archivePhotos:" destination="85D-R5-dco" id="wiC-Bn-cO4"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="tray.and.arrow.down" catalog="system" id="IOd-29-7iM">
+                                <connections>
+                                    <action selector="importPhotos:" destination="85D-R5-dco" id="czz-gq-8sk"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="RMg-pI-NWs">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -142,9 +149,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="archivebox" catalog="system" width="128" height="106"/>
         <image name="folder" catalog="system" width="128" height="95"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="photo" catalog="system" width="128" height="93"/>
-        <image name="tray.and.arrow.down.fill" catalog="system" width="128" height="114"/>
+        <image name="tray.and.arrow.down" catalog="system" width="128" height="109"/>
     </resources>
 </document>
