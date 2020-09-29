@@ -3,11 +3,11 @@ import SPAlert
 import UIKit
 import WhatsNewKit
 
-class FoldersViewController: UITableViewController {
-    let manager = FileManager.default
+class AlbumsViewController: UITableViewController {
+    private let manager = FileManager.default
 
-    var folders: [URL] = []
-    var monitoringChanges = false
+    private var folders: [URL] = []
+    private var monitoringChanges = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +72,7 @@ class FoldersViewController: UITableViewController {
         }
 
         guard !self.isEditing else { return }
-        self.performSegue(withIdentifier: "traverse", sender: self)
+        self.performSegue(withIdentifier: "traverseFolder", sender: self)
     }
 
     override func tableView(_: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -126,7 +126,7 @@ class FoldersViewController: UITableViewController {
     // MARK: I/O
 
     @IBAction
-    func refresh(_: UIRefreshControl, forEvent _: UIEvent) {
+    func refresh(_: UIRefreshControl) {
         self.refresh()
     }
 

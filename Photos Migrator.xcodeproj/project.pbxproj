@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		3D8B45100F8A9B431E615397 /* Pods_Photos_Migrator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFF1F05A9D08531E77C62C1 /* Pods_Photos_Migrator.framework */; };
 		E823F28124C571E3009FF0AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823F28024C571E3009FF0AF /* AppDelegate.swift */; };
-		E823F28524C571E3009FF0AF /* FoldersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823F28424C571E3009FF0AF /* FoldersViewController.swift */; };
+		E823F28524C571E3009FF0AF /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823F28424C571E3009FF0AF /* AlbumsViewController.swift */; };
 		E823F28824C571E3009FF0AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E823F28624C571E3009FF0AF /* Main.storyboard */; };
 		E823F28A24C571E4009FF0AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E823F28924C571E4009FF0AF /* Assets.xcassets */; };
 		E823F28D24C571E4009FF0AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E823F28B24C571E4009FF0AF /* LaunchScreen.storyboard */; };
 		E823F29524C57E3A009FF0AF /* UIViewController+UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823F29424C57E3A009FF0AF /* UIViewController+UIAlertController.swift */; };
 		E823F29724C58F89009FF0AF /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E823F29624C58F89009FF0AF /* PhotosViewController.swift */; };
+		E8D8284025237751004EA954 /* CollectionListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D8283F25237751004EA954 /* CollectionListsViewController.swift */; };
+		E8D828432523776C004EA954 /* CollectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D828422523776C004EA954 /* CollectionsViewController.swift */; };
+		E8D8284925237F3D004EA954 /* MoveAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D8284825237F3D004EA954 /* MoveAlbumsViewController.swift */; };
 		E8F96F0024C6F86E00BBB27C /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8F96EFF24C6F86E00BBB27C /* Acknowledgements.plist */; };
 /* End PBXBuildFile section */
 
@@ -24,13 +27,16 @@
 		E1AB412F7EE03334F4F71036 /* Pods-Photos Migrator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Photos Migrator.debug.xcconfig"; path = "Target Support Files/Pods-Photos Migrator/Pods-Photos Migrator.debug.xcconfig"; sourceTree = "<group>"; };
 		E823F27D24C571E3009FF0AF /* Photos Migrator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Photos Migrator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E823F28024C571E3009FF0AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E823F28424C571E3009FF0AF /* FoldersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersViewController.swift; sourceTree = "<group>"; };
+		E823F28424C571E3009FF0AF /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		E823F28724C571E3009FF0AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E823F28924C571E4009FF0AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E823F28C24C571E4009FF0AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E823F28E24C571E4009FF0AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E823F29424C57E3A009FF0AF /* UIViewController+UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIAlertController.swift"; sourceTree = "<group>"; };
 		E823F29624C58F89009FF0AF /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		E8D8283F25237751004EA954 /* CollectionListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListsViewController.swift; sourceTree = "<group>"; };
+		E8D828422523776C004EA954 /* CollectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsViewController.swift; sourceTree = "<group>"; };
+		E8D8284825237F3D004EA954 /* MoveAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAlbumsViewController.swift; sourceTree = "<group>"; };
 		E8F96EFF24C6F86E00BBB27C /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,13 +92,16 @@
 			children = (
 				E8F96EFF24C6F86E00BBB27C /* Acknowledgements.plist */,
 				E823F28024C571E3009FF0AF /* AppDelegate.swift */,
-				E823F28424C571E3009FF0AF /* FoldersViewController.swift */,
+				E823F28424C571E3009FF0AF /* AlbumsViewController.swift */,
 				E823F29624C58F89009FF0AF /* PhotosViewController.swift */,
 				E823F28624C571E3009FF0AF /* Main.storyboard */,
 				E823F28924C571E4009FF0AF /* Assets.xcassets */,
 				E823F28B24C571E4009FF0AF /* LaunchScreen.storyboard */,
 				E823F28E24C571E4009FF0AF /* Info.plist */,
 				E823F29424C57E3A009FF0AF /* UIViewController+UIAlertController.swift */,
+				E8D8283F25237751004EA954 /* CollectionListsViewController.swift */,
+				E8D828422523776C004EA954 /* CollectionsViewController.swift */,
+				E8D8284825237F3D004EA954 /* MoveAlbumsViewController.swift */,
 			);
 			path = "Photos Migrator";
 			sourceTree = "<group>";
@@ -213,9 +222,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D8284925237F3D004EA954 /* MoveAlbumsViewController.swift in Sources */,
+				E8D828432523776C004EA954 /* CollectionsViewController.swift in Sources */,
 				E823F29524C57E3A009FF0AF /* UIViewController+UIAlertController.swift in Sources */,
 				E823F29724C58F89009FF0AF /* PhotosViewController.swift in Sources */,
-				E823F28524C571E3009FF0AF /* FoldersViewController.swift in Sources */,
+				E823F28524C571E3009FF0AF /* AlbumsViewController.swift in Sources */,
+				E8D8284025237751004EA954 /* CollectionListsViewController.swift in Sources */,
 				E823F28124C571E3009FF0AF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,7 +304,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -346,7 +358,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -362,13 +374,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 56AKBRMSPN;
 				INFOPLIST_FILE = "Photos Migrator/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = VaslD.App.PhotosMigrator;
 				PRODUCT_NAME = "Photos Migrator";
 				SWIFT_VERSION = 5.0;
@@ -382,13 +396,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 56AKBRMSPN;
 				INFOPLIST_FILE = "Photos Migrator/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = VaslD.App.PhotosMigrator;
 				PRODUCT_NAME = "Photos Migrator";
 				SWIFT_VERSION = 5.0;

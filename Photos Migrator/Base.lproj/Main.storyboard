@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5jH-CQ-r5i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EzH-VF-yg9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Albums-->
         <scene sceneID="Ccg-Br-cea">
             <objects>
-                <tableViewController id="m7S-bf-M8Q" customClass="FoldersViewController" customModule="Photos_Migrator" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="m7S-bf-M8Q" customClass="AlbumsViewController" customModule="Photos_Migrator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="4Mw-K7-q5g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="basic" textLabel="dFm-B1-FoL" imageView="Ls8-aj-79s" style="IBUITableViewCellStyleDefault" id="N9s-oX-Tts">
                                 <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
@@ -23,14 +24,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dFm-B1-FoL">
-                                            <rect key="frame" x="59" y="0.0" width="295" height="43.5"/>
+                                            <rect key="frame" x="60.25" y="0.0" width="293.75" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="folder" catalog="system" id="Ls8-aj-79s">
-                                            <rect key="frame" x="20.25" y="12.5" width="23.5" height="17.5"/>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="photo.on.rectangle.angled" catalog="system" id="Ls8-aj-79s">
+                                            <rect key="frame" x="18.75" y="10.5" width="26.5" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -53,25 +54,224 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="refresh:forEvent:" destination="m7S-bf-M8Q" eventType="valueChanged" id="REm-b3-JFL"/>
+                            <action selector="refresh:" destination="m7S-bf-M8Q" eventType="valueChanged" id="NrG-vD-cvJ"/>
                         </connections>
                     </refreshControl>
                     <connections>
-                        <segue destination="85D-R5-dco" kind="show" identifier="traverse" id="zEh-gv-6G2"/>
+                        <segue destination="85D-R5-dco" kind="show" identifier="traverseFolder" id="zEh-gv-6G2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="65j-16-7AZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1144.9275362318842" y="144.64285714285714"/>
         </scene>
+        <!--Collections-->
+        <scene sceneID="hQO-5o-0Rh">
+            <objects>
+                <tableViewController id="SoB-oB-pru" customClass="CollectionListsViewController" customModule="Photos_Migrator" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="eD6-Te-dZA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="basic" textLabel="dDD-9g-olk" imageView="okz-3N-GVQ" style="IBUITableViewCellStyleDefault" id="zeV-D2-P5X">
+                                <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zeV-D2-P5X" id="C3J-zr-NWD">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dDD-9g-olk">
+                                            <rect key="frame" x="59" y="0.0" width="276" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="folder" catalog="system" id="okz-3N-GVQ">
+                                            <rect key="frame" x="20.5" y="12.5" width="23" height="17.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="SoB-oB-pru" id="eqs-8Z-V0k"/>
+                            <outlet property="delegate" destination="SoB-oB-pru" id="HG3-KI-Pff"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Collections" id="qoK-Qg-Ljz">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="eDC-jT-016">
+                            <connections>
+                                <action selector="createFolder:" destination="SoB-oB-pru" id="5qw-rs-Woq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="70H-E0-u9r">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="SoB-oB-pru" eventType="valueChanged" id="1pp-bG-jxu"/>
+                        </connections>
+                    </refreshControl>
+                    <connections>
+                        <segue destination="NBN-K0-03k" kind="show" identifier="enumerateAlbums" id="ESw-rk-v5k"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ccj-F4-s7q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145" y="838"/>
+        </scene>
+        <!--Albums-->
+        <scene sceneID="3Gh-up-IrC">
+            <objects>
+                <tableViewController hidesBottomBarWhenPushed="YES" id="NBN-K0-03k" customClass="CollectionsViewController" customModule="Photos_Migrator" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="W6n-pf-jq8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="basic" textLabel="ckH-Sg-yur" imageView="XT5-bH-UdS" style="IBUITableViewCellStyleDefault" id="1xk-sC-jJe">
+                                <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1xk-sC-jJe" id="OFp-UC-DHK">
+                                    <rect key="frame" x="0.0" y="0.0" width="330" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ckH-Sg-yur">
+                                            <rect key="frame" x="60.25" y="0.0" width="261.75" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="photo.on.rectangle.angled" catalog="system" id="XT5-bH-UdS">
+                                            <rect key="frame" x="18.75" y="10.5" width="26.5" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="NBN-K0-03k" id="oUr-yL-CJ3"/>
+                            <outlet property="delegate" destination="NBN-K0-03k" id="oye-ID-J9P"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Albums" id="V6M-P7-0bI">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="IQS-Zw-96x">
+                            <connections>
+                                <segue destination="Qvt-1u-dRO" kind="presentation" modalPresentationStyle="fullScreen" id="E1k-18-2P3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="17K-6p-dFZ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="NBN-K0-03k" eventType="valueChanged" id="Tfs-lD-Paj"/>
+                        </connections>
+                    </refreshControl>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pG6-oT-DI3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2074" y="838"/>
+        </scene>
+        <!--Add Albums-->
+        <scene sceneID="hIF-3I-DPf">
+            <objects>
+                <tableViewController id="RSZ-Vd-iNp" customClass="MoveAlbumsViewController" customModule="Photos_Migrator" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="HNs-LN-tYG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="basic" textLabel="HuT-S3-GAf" imageView="KXD-8x-khz" style="IBUITableViewCellStyleDefault" id="NVQ-Fj-IaW">
+                                <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NVQ-Fj-IaW" id="Srq-vM-9na">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HuT-S3-GAf">
+                                            <rect key="frame" x="60.25" y="0.0" width="293.75" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="photo.on.rectangle.angled" catalog="system" id="KXD-8x-khz">
+                                            <rect key="frame" x="18.75" y="10.5" width="26.5" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RSZ-Vd-iNp" id="qtW-Bh-Ibh"/>
+                            <outlet property="delegate" destination="RSZ-Vd-iNp" id="3SU-g5-LLq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add Albums" id="7RQ-TD-a9F">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WYX-H7-xyG">
+                            <connections>
+                                <action selector="cancelMove:" destination="RSZ-Vd-iNp" id="ZbF-7m-Ivu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="FBh-VY-cKj">
+                            <connections>
+                                <action selector="moveAlbum:" destination="RSZ-Vd-iNp" id="oKp-0I-xpS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6TE-XT-du5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3945" y="838"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QWP-r9-kt7">
+            <objects>
+                <navigationController id="Qvt-1u-dRO" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SXe-vX-mU3">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="RSZ-Vd-iNp" kind="relationship" relationship="rootViewController" id="2aj-qj-u5W"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MZ8-t1-fsL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3055" y="838"/>
+        </scene>
+        <!--Organize-->
+        <scene sceneID="oVt-RZ-ZWA">
+            <objects>
+                <navigationController id="bUl-RJ-kzf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Organize" image="shippingbox" catalog="system" id="2Kw-Kb-IfZ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0X5-Mm-jdk">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="SoB-oB-pru" kind="relationship" relationship="rootViewController" id="dQh-a3-Jtn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IfD-LC-K3b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="235" y="839"/>
+        </scene>
         <!--Photos-->
         <scene sceneID="qnM-PB-yPo">
             <objects>
-                <tableViewController id="85D-R5-dco" customClass="PhotosViewController" customModule="Photos_Migrator" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="85D-R5-dco" customClass="PhotosViewController" customModule="Photos_Migrator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Zh1-gV-ukh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="basic" textLabel="j83-lO-RNK" imageView="m17-Ln-P7f" style="IBUITableViewCellStyleDefault" id="rGT-Dq-lfc">
                                 <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
@@ -118,7 +318,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="refresh:forEvent:" destination="85D-R5-dco" eventType="valueChanged" id="D3G-Nb-mN8"/>
+                            <action selector="refresh:" destination="85D-R5-dco" eventType="valueChanged" id="Gcr-ej-GUy"/>
                         </connections>
                     </refreshControl>
                 </tableViewController>
@@ -126,13 +326,14 @@
             </objects>
             <point key="canvasLocation" x="2074" y="145"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Migrate-->
         <scene sceneID="lTG-Q5-Cik">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5jH-CQ-r5i" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Migrate" image="arrow.left.arrow.right.square" catalog="system" id="YNE-vx-FzN"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="CH3-A3-g4z">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CH3-A3-g4z">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -147,12 +348,36 @@
             </objects>
             <point key="canvasLocation" x="234.78260869565219" y="144.64285714285714"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="F93-pf-2lH">
+            <objects>
+                <tabBarController id="EzH-VF-yg9" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dg9-LM-cF6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="5jH-CQ-r5i" kind="relationship" relationship="viewControllers" id="HUY-xW-k7B"/>
+                        <segue destination="bUl-RJ-kzf" kind="relationship" relationship="viewControllers" id="AfX-4q-JpK"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KVN-5D-5sa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-748" y="585"/>
+        </scene>
     </scenes>
     <resources>
         <image name="archivebox" catalog="system" width="128" height="106"/>
-        <image name="folder" catalog="system" width="128" height="95"/>
+        <image name="arrow.left.arrow.right.square" catalog="system" width="128" height="114"/>
+        <image name="folder" catalog="system" width="128" height="97"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="photo.on.rectangle.angled" catalog="system" width="128" height="101"/>
+        <image name="shippingbox" catalog="system" width="128" height="124"/>
         <image name="tray.and.arrow.down" catalog="system" width="128" height="109"/>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

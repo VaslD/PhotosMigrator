@@ -6,7 +6,8 @@ typealias UIAlertEditorHandler = (String?) -> Void
 
 extension UIViewController {
     func showAlert(title: String, message: String?, action: String = "OK",
-                   completionHandler: UIAlertHandler? = nil, actionHandler: UIAlertHandler? = nil) {
+                   completionHandler: UIAlertHandler? = nil, actionHandler: UIAlertHandler? = nil)
+    {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: action, style: .default,
                                    handler: actionHandler == nil ? nil : { _ in
@@ -21,7 +22,8 @@ extension UIViewController {
 
     func showEditor(title: String, message: String?, placeholder: String?,
                     cancelAction: String = "Cancel", doneAction: String = "Done",
-                    completionHandler: UIAlertHandler? = nil, actionHandler: UIAlertEditorHandler?) {
+                    completionHandler: UIAlertHandler? = nil, actionHandler: UIAlertEditorHandler?)
+    {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField(configurationHandler: { field in
             field.placeholder = placeholder

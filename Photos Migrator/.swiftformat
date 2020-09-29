@@ -5,11 +5,12 @@
 --conflictmarkers reject
 --decimalgrouping 3,6
 --elseposition same-line
---empty void
 --exponentcase lowercase
 --exponentgrouping enabled
 --fractiongrouping disabled
 --fragment false
+--funcattributes prev-line
+--guardelse auto
 --header strip
 --hexgrouping 4,8
 --hexliteralcase uppercase
@@ -19,6 +20,7 @@
 --indentcase false
 --linebreaks lf
 --maxwidth none
+--modifierorder 
 --nospaceoperators 
 --nowrapoperators 
 --octalgrouping 4,8
@@ -28,11 +30,15 @@
 --selfrequired 
 --semicolons never
 --shortoptionals always
---specifierorder 
+--smarttabs enabled
 --stripunusedargs always
+--swiftversion 5.3
 --tabwidth unspecified
 --trailingclosures 
 --trimwhitespace always
+--typeattributes preserve
+--varattributes preserve
+--voidtype void
 --wraparguments after-first
 --wrapcollections before-first
 --wrapparameters after-first

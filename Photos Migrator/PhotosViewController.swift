@@ -85,7 +85,7 @@ class PhotosViewController: UITableViewController {
     // MARK: I/O
 
     @IBAction
-    func refresh(_: UIRefreshControl, forEvent _: UIEvent) {
+    func refresh(_: UIRefreshControl) {
         self.refresh()
     }
 
@@ -255,13 +255,10 @@ class PhotosViewController: UITableViewController {
         var hud = MBProgressHUD.showAdded(to: navigationController!.view, animated: true)
         DispatchQueue.global(qos: .background).async {
             let name = try! self.path!.resourceValues(forKeys: Set(arrayLiteral: .nameKey)).name!
-            let searchResults = PHAssetCollection.fetchTopLevelUserCollections(with: nil)
-            searchResults.enumerateObjects { collection, _, shouldStop in
-                if let result = collection as? PHAssetCollection, result.localizedTitle == name {
-                    self.collection = result
-                    shouldStop.pointee = true
-                }
-            }
+            let options = PHFetchOptions()
+            options.predicate = NSPredicate(format: "title == %@", name)
+            let searchResult = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: options)
+            self.collection = searchResult.firstObject
 
             DispatchQueue.main.async {
                 hud.hide(animated: true)
