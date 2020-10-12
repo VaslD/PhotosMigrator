@@ -18,7 +18,7 @@
 		E8D8284025237751004EA954 /* CollectionListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D8283F25237751004EA954 /* CollectionListsViewController.swift */; };
 		E8D828432523776C004EA954 /* CollectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D828422523776C004EA954 /* CollectionsViewController.swift */; };
 		E8D8284925237F3D004EA954 /* MoveAlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D8284825237F3D004EA954 /* MoveAlbumsViewController.swift */; };
-		E8F96F0024C6F86E00BBB27C /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8F96EFF24C6F86E00BBB27C /* Acknowledgements.plist */; };
+		E8FC3E6F25344ED80021FB4A /* Pods-Photos Migrator-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8FC3E6E25344ED80021FB4A /* Pods-Photos Migrator-acknowledgements.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,7 @@
 		E8D8283F25237751004EA954 /* CollectionListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListsViewController.swift; sourceTree = "<group>"; };
 		E8D828422523776C004EA954 /* CollectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsViewController.swift; sourceTree = "<group>"; };
 		E8D8284825237F3D004EA954 /* MoveAlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveAlbumsViewController.swift; sourceTree = "<group>"; };
-		E8F96EFF24C6F86E00BBB27C /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
+		E8FC3E6E25344ED80021FB4A /* Pods-Photos Migrator-acknowledgements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "Pods-Photos Migrator-acknowledgements.plist"; path = "Pods/Target Support Files/Pods-Photos Migrator/Pods-Photos Migrator-acknowledgements.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 		E823F27F24C571E3009FF0AF /* Photos Migrator */ = {
 			isa = PBXGroup;
 			children = (
-				E8F96EFF24C6F86E00BBB27C /* Acknowledgements.plist */,
+				E8FC3E6E25344ED80021FB4A /* Pods-Photos Migrator-acknowledgements.plist */,
 				E823F28024C571E3009FF0AF /* AppDelegate.swift */,
 				E823F28424C571E3009FF0AF /* AlbumsViewController.swift */,
 				E823F29624C58F89009FF0AF /* PhotosViewController.swift */,
@@ -167,8 +167,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E823F28D24C571E4009FF0AF /* LaunchScreen.storyboard in Resources */,
-				E8F96F0024C6F86E00BBB27C /* Acknowledgements.plist in Resources */,
 				E823F28A24C571E4009FF0AF /* Assets.xcassets in Resources */,
+				E8FC3E6F25344ED80021FB4A /* Pods-Photos Migrator-acknowledgements.plist in Resources */,
 				E823F28824C571E3009FF0AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

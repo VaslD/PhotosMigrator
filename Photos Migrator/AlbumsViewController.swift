@@ -112,7 +112,7 @@ class AlbumsViewController: UITableViewController {
         var config = WhatsNewViewController.Configuration()
         config.detailButton = WhatsNewViewController.DetailButton(title: "Acknowledgements", action: .custom(action: { _ in
             self.dismiss(animated: true, completion: {
-                let acknowledgements = AcknowListViewController(fileNamed: "Acknowledgements")
+                let acknowledgements = AcknowListViewController()
                 acknowledgements.headerText = "Photos Migrator by VaslD\nBuilt on open-source libraries."
                 acknowledgements.footerText = "Icon made by Good Ware from Flaticon.\n\nSpecial thanks to CocoaPods and SwiftFormat."
                 self.navigationController!.pushViewController(acknowledgements, animated: true)

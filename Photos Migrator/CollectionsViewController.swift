@@ -7,6 +7,7 @@ class CollectionsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = self.list.localizedTitle ?? "Albums"
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -41,6 +42,10 @@ class CollectionsViewController: UITableViewController {
 
     override func numberOfSections(in _: UITableView) -> Int {
         1
+    }
+
+    override func tableView(_: UITableView, titleForHeaderInSection _: Int) -> String? {
+        "Albums in Collection"
     }
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {

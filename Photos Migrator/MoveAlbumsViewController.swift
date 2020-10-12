@@ -5,11 +5,12 @@ import UIKit
 
 class MoveAlbumsViewController: UITableViewController {
     var parentFolder: PHCollectionList!
-    var collections: PHFetchResult<PHAssetCollection>?
+    var collections: [PHCollection]?
     var selections: [Bool] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Add to " + (self.parentFolder.localizedTitle ?? "Collection")
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -21,8 +22,10 @@ class MoveAlbumsViewController: UITableViewController {
         let options = PHFetchOptions()
         options.predicate = NSPredicate(format: "localIdentifier != %@", self.parentFolder.localIdentifier)
         options.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        self.collections = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular,
-                                                                   options: options)
+        let collections = PHAssetCollection.fetchTopLevelUserCollections(with: options)
+        self.collections = collections.objects(at: IndexSet(0 ..< collections.count)).filter { (item) -> Bool in
+            item is PHAssetCollection
+        }
         self.selections = Array(repeating: false, count: self.collections!.count)
         self.tableView.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
     }
@@ -31,13 +34,17 @@ class MoveAlbumsViewController: UITableViewController {
         1
     }
 
+    override func tableView(_: UITableView, titleForHeaderInSection _: Int) -> String? {
+        "Top-Level Albums"
+    }
+
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         self.collections?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "basic", for: indexPath)
-        let collection = self.collections!.object(at: indexPath.row)
+        let collection = self.collections![indexPath.row]
         cell.textLabel!.text = collection.localizedTitle
         cell.accessoryType = self.selections[indexPath.row] ? .checkmark : .none
         return cell
@@ -63,9 +70,10 @@ class MoveAlbumsViewController: UITableViewController {
                 SPAlert.present(title: "Add Albums Failed", message: "Unable to initiate changes.", preset: .error)
                 return
             }
-            self.collections!.enumerateObjects { collection, index, _ in
-                guard self.selections[index] else { return }
-                request.insertChildCollections([collection] as NSArray, at: IndexSet(arrayLiteral: 0))
+            for index in 0 ..< self.collections!.count {
+                if self.selections[index] {
+                    request.insertChildCollections([self.collections![index]] as NSArray, at: IndexSet(arrayLiteral: 0))
+                }
             }
         } completionHandler: { success, error in
             DispatchQueue.main.async {
