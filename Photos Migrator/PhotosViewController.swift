@@ -8,8 +8,6 @@ import UIKit
 class PhotosViewController: UITableViewController {
     let manager = FileManager.default
 
-    var observer: NSObjectProtocol?
-
     var path: URL?
     var photos: [URL] = []
     var collection: PHAssetCollection?
@@ -18,10 +16,8 @@ class PhotosViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItems!.insert(editButtonItem, at: 0)
-        self.observer = NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil,
-                                                               queue: .main, using: { _ in
-                                                                   self.refresh()
-                                                               })
+        NotificationCenter.default.addObserver(self, selector: #selector(Self.onEnteredForeground(_:)),
+                                               name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -35,10 +31,12 @@ class PhotosViewController: UITableViewController {
         }
     }
 
+    @objc
+    func onEnteredForeground(_ notification: Notification) {
+        self.refresh()
+    }
+
     func dismiss() {
-        if let observer = self.observer {
-            NotificationCenter.default.removeObserver(observer)
-        }
         self.navigationController!.popViewController(animated: true)
     }
 
@@ -95,7 +93,7 @@ class PhotosViewController: UITableViewController {
                                                                options: [.skipsHiddenFiles])
                 .filter { item in (try? item.resourceValues(forKeys: Set(arrayLiteral: .isDirectoryKey)))?.isDirectory != true }
                 .sorted { lhs, rhs in
-                    lhs.lastPathComponent < rhs.lastPathComponent
+                    lhs.lastPathComponent.compare(rhs.lastPathComponent, options: .numeric) == .orderedAscending
                 }
 
             if self.photos.isEmpty {
@@ -229,6 +227,7 @@ class PhotosViewController: UITableViewController {
                         if self.photos.isEmpty {
                             SPAlert.present(title: "Photos Imported", message: "An album with imported photos was also created.",
                                             preset: .done)
+                            try? self.manager.removeItem(at: self.path!)
                             self.dismiss()
                         } else {
                             SPAlert.present(title: "Some Photos Imported",

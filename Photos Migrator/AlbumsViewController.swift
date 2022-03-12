@@ -12,12 +12,8 @@ class AlbumsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = editButtonItem
-        if let delegate = UIApplication.shared.delegate as? AppDelegate {
-            delegate.observers.append(NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
-                                                                             object: nil, queue: .main, using: { _ in
-                                                                                 self.refresh()
-                                                                             }))
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(Self.onEnteredForeground(_:)),
+                                               name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -30,6 +26,11 @@ class AlbumsViewController: UITableViewController {
         if let controller = segue.destination as? PhotosViewController {
             controller.path = self.folders[self.tableView.indexPathForSelectedRow!.row]
         }
+    }
+
+    @objc
+    func onEnteredForeground(_ notification: Notification) {
+        self.refresh()
     }
 
     override func numberOfSections(in _: UITableView) -> Int { 1 }
@@ -48,7 +49,8 @@ class AlbumsViewController: UITableViewController {
             cell.accessoryType = .none
         } else {
             do {
-                cell.textLabel!.text = try self.folders[indexPath.row].resourceValues(forKeys: Set(arrayLiteral: .nameKey)).name!
+                cell.textLabel!.text = try self.folders[indexPath.row]
+                    .resourceValues(forKeys: Set(arrayLiteral: .nameKey)).name!
                 cell.textLabel!.font = UIFont.preferredFont(forTextStyle: .body)
                 cell.accessoryType = .disclosureIndicator
             } catch {
@@ -104,20 +106,35 @@ class AlbumsViewController: UITableViewController {
     @IBAction
     func showAboutPage(_: UIBarButtonItem) {
         let about = WhatsNew(title: "Photos Migrator", items: [
-            WhatsNew.Item(title: "Create Albums as Folders", subtitle: "Use Edit mode or Files app to create custom-named folders. These will be albums which contains imported photos.", image: UIImage(systemName: "folder.fill.badge.plus")),
-            WhatsNew.Item(title: "Add Images", subtitle: "Use Files app, third-party apps, and iTunes to manage images inside albums (folders). Videos are not yet supported.", image: UIImage(systemName: "photo.fill")),
-            WhatsNew.Item(title: "Browse Photos to Import", subtitle: "In Photos Migrator, browse albums and photos to be imported. Optionally, delete unwanted ones.", image: UIImage(systemName: "eye.fill")),
-            WhatsNew.Item(title: "Migrate", subtitle: "In each album, tap the \"Import\" icon on upper-right to import this album.", image: UIImage(systemName: "tray.and.arrow.down.fill")),
+            WhatsNew
+                .Item(title: "Create Albums as Folders",
+                      subtitle: "Use Edit mode or Files app to create custom-named folders. These will be albums which contains imported photos.",
+                      image: UIImage(systemName: "folder.fill.badge.plus")),
+            WhatsNew
+                .Item(title: "Add Images",
+                      subtitle: "Use Files app, third-party apps, and iTunes to manage images inside albums (folders). Videos are not yet supported.",
+                      image: UIImage(systemName: "photo.fill")),
+            WhatsNew
+                .Item(title: "Browse Photos to Import",
+                      subtitle: "In Photos Migrator, browse albums and photos to be imported. Optionally, delete unwanted ones.",
+                      image: UIImage(systemName: "eye.fill")),
+            WhatsNew
+                .Item(title: "Migrate",
+                      subtitle: "In each album, tap the \"Import\" icon on upper-right to import this album.",
+                      image: UIImage(systemName: "tray.and.arrow.down.fill")),
         ])
         var config = WhatsNewViewController.Configuration()
-        config.detailButton = WhatsNewViewController.DetailButton(title: "Acknowledgements", action: .custom(action: { _ in
-            self.dismiss(animated: true, completion: {
-                let acknowledgements = AcknowListViewController()
-                acknowledgements.headerText = "Photos Migrator by VaslD\nBuilt on open-source libraries."
-                acknowledgements.footerText = "Icon made by Good Ware from Flaticon.\n\nSpecial thanks to CocoaPods and SwiftFormat."
-                self.navigationController!.pushViewController(acknowledgements, animated: true)
-            })
-        }))
+        config.detailButton = WhatsNewViewController
+            .DetailButton(title: "Acknowledgements", action: .custom(action: { _ in
+                self.dismiss(animated: true, completion: {
+                    let acknowledgements = AcknowListViewController()
+                    acknowledgements.headerText = "Photos Migrator by VaslD\nBuilt on open-source libraries."
+                    acknowledgements
+                        .footerText =
+                        "Icon made by Good Ware from Flaticon.\n\nSpecial thanks to CocoaPods and SwiftFormat."
+                    self.navigationController!.pushViewController(acknowledgements, animated: true)
+                })
+            }))
         config.completionButton = WhatsNewViewController.CompletionButton(title: "Done", action: .dismiss)
         let controller = WhatsNewViewController(whatsNew: about, configuration: config)
         controller.present(on: self, animated: true, completion: nil)
@@ -132,10 +149,14 @@ class AlbumsViewController: UITableViewController {
 
     private func refresh() {
         do {
-            let root = try self.manager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            self.folders = try self.manager.contentsOfDirectory(at: root, includingPropertiesForKeys: [.nameKey, .isDirectoryKey],
-                                                                options: [.skipsHiddenFiles])
-                .filter { item in (try? item.resourceValues(forKeys: Set(arrayLiteral: .isDirectoryKey)))?.isDirectory == true }
+            let root = try self.manager
+                .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            self.folders = try self.manager
+                .contentsOfDirectory(at: root, includingPropertiesForKeys: [.nameKey, .isDirectoryKey],
+                                     options: [.skipsHiddenFiles])
+                .filter { item in
+                    (try? item.resourceValues(forKeys: Set(arrayLiteral: .isDirectoryKey)))?.isDirectory == true
+                }
 
             if self.folders.isEmpty {
                 SPAlert.present(title: "No Albums Found",
@@ -157,13 +178,17 @@ class AlbumsViewController: UITableViewController {
         self.showEditor(title: "Create New Album", message: "Enter the name of new album.", placeholder: "Untitled",
                         actionHandler: { text in
                             guard let name = text else { return }
-                            let root = try! self.manager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+                            let root = try! self.manager
+                                .url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                             let url = root.appendingPathComponent(name, isDirectory: true)
                             do {
-                                try self.manager.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+                                try self.manager
+                                    .createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
                                 DispatchQueue.main.async { self.refresh() }
                             } catch {
-                                SPAlert.present(title: "Cannot Create Album", message: error.localizedDescription, preset: .error)
+                                SPAlert
+                                    .present(title: "Cannot Create Album", message: error.localizedDescription,
+                                             preset: .error)
                             }
                         })
     }
